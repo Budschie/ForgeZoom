@@ -22,6 +22,7 @@ public class Keybinds {
 
 	@SubscribeEvent(priority= EventPriority.NORMAL, receiveCanceled=true)
 	public void keyInputEvent(InputEvent.KeyInputEvent event) {
+		//if (Minecraft.getInstance().currentScreen != null) return; //fixes issue where pressing keybind when in menu will still zoom, but breaks scroll to change zoom factor
 		if (event.getKey() != GLFW.GLFW_KEY_C) return;
 
 		if (event.getAction() == GLFW.GLFW_PRESS) {

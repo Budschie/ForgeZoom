@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 
 group = 'com.tyler'
-version = '1.0-SNAPSHOT'
+version = '0.2'
 archivesBaseName = 'forgezoom'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'

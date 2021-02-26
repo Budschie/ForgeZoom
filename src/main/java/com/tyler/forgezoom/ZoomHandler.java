@@ -14,6 +14,7 @@ public class ZoomHandler {
 	private static final float fovStep = .1F;
 
 	public static void enableZoom() {
+		resetZoom();
 		zoomEnabled = true;
 	}
 

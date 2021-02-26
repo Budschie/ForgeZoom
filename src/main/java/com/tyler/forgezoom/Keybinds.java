@@ -34,10 +34,12 @@ public class Keybinds {
 
 	@SubscribeEvent
 	public void mouseScrollEvent(InputEvent.MouseScrollEvent event) {
-		double wheelDelta = event.getScrollDelta();
-		if (wheelDelta < 0) ZoomHandler.decrementZoom();
-		if (wheelDelta > 0) ZoomHandler.incrementZoom();
-		event.setCanceled(true);
+		if (KEY_ZOOM.isKeyDown()) {
+			double wheelDelta = event.getScrollDelta();
+			if (wheelDelta < 0) ZoomHandler.decrementZoom();
+			if (wheelDelta > 0) ZoomHandler.incrementZoom();
+			event.setCanceled(true);
+		}
 	}
 
 	public static void registerKeys() {

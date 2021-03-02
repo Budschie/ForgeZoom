@@ -33,9 +33,11 @@ public class Keybinds {
 		}
 	}
 
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void mouseScrollEvent(InputEvent.MouseScrollEvent event) {
+		Minecraft.getInstance().player.sendChatMessage("Event received");
 		if (KEY_ZOOM.isKeyDown()) {
+			Minecraft.getInstance().player.sendChatMessage("Key is down");
 			double wheelDelta = event.getScrollDelta();
 			if (wheelDelta < 0) ZoomHandler.decrementZoom();
 			if (wheelDelta > 0) ZoomHandler.incrementZoom();

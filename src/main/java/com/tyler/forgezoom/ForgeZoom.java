@@ -13,19 +13,14 @@ public class ForgeZoom {
 	private static final Logger LOGGER = LogManager.getLogger();
 	
 	public ForgeZoom() {
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 		MinecraftForge.EVENT_BUS.register(this);
-	}
-	
-	private void setup(final FMLCommonSetupEvent event) {
-		MinecraftForge.EVENT_BUS.register(new Keybinds());
-		MinecraftForge.EVENT_BUS.register(new ZoomHandler());
 	}
 	
 	private void doClientStuff(final FMLClientSetupEvent event) {
 		Keybinds.registerKeys();
 		LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
-		
+		MinecraftForge.EVENT_BUS.register(new Keybinds());
+		MinecraftForge.EVENT_BUS.register(new ZoomHandler());
 	}
 }

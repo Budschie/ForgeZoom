@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.glfw.GLFW;
 
 import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.ClientRegistry;
 import net.minecraftforge.client.event.InputEvent;
@@ -19,7 +20,7 @@ public class Keybinds {
 	
 	@SubscribeEvent(priority= EventPriority.NORMAL, receiveCanceled=true)
 	public static void keyInputEvent(InputEvent.KeyInputEvent event) {
-		//if (Minecraft.getInstance().currentScreen != null) return; //fixes issue where pressing keybind when in menu will still zoom, but breaks scroll to change zoom factor
+		if (Minecraft.getInstance().screen != null) return; //fixes issue where pressing keybind when in menu will still zoom, but breaks scroll to change zoom factor
 		if (event.getKey() != GLFW.GLFW_KEY_C) return;
 
 		if (event.getAction() == GLFW.GLFW_PRESS) {

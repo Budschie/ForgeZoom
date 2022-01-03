@@ -1,8 +1,11 @@
 package com.tyler.forgezoom;
 
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.FOVModifierEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
+@EventBusSubscriber(value = Dist.CLIENT)
 public class ZoomHandler {
 	private static final float defaultFOVModifier = 4F;
 	private static final float minFOVModifier = 50F;
@@ -40,7 +43,7 @@ public class ZoomHandler {
 	}
 
 	@SubscribeEvent
-	public void updateFOV(FOVModifierEvent event) {
+	public static void updateFOV(FOVModifierEvent event) {
 		/*if  (!zoomEnabled && userDefaultFOV == -1) {
 			userDefaultFOV = event.getFov();
 		}*/

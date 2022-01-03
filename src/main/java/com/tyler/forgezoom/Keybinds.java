@@ -5,20 +5,20 @@ import org.lwjgl.glfw.GLFW;
 
 import net.minecraft.client.KeyMapping;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.ClientRegistry;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@OnlyIn(Dist.CLIENT)
+@EventBusSubscriber(value = Dist.CLIENT)
 public class Keybinds {
 	private static final Logger LOGGER = LogManager.getLogger();
 
 	public static final KeyMapping KEY_ZOOM = new KeyMapping("key.forgezoom.zoom", GLFW.GLFW_KEY_C, "key.categories.forgezoom");
-
+	
 	@SubscribeEvent(priority= EventPriority.NORMAL, receiveCanceled=true)
-	public void keyInputEvent(InputEvent.KeyInputEvent event) {
+	public static void keyInputEvent(InputEvent.KeyInputEvent event) {
 		//if (Minecraft.getInstance().currentScreen != null) return; //fixes issue where pressing keybind when in menu will still zoom, but breaks scroll to change zoom factor
 		if (event.getKey() != GLFW.GLFW_KEY_C) return;
 
@@ -31,7 +31,7 @@ public class Keybinds {
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
-	public void mouseScrollEvent(InputEvent.MouseScrollEvent event) {
+	public static void mouseScrollEvent(InputEvent.MouseScrollEvent event) {
 		// Minecraft.getInstance().player.sendChatMessage("Event received");
 		if (KEY_ZOOM.isDown()) {
 			// Minecraft.getInstance().player.sendChatMessage("Key is down");

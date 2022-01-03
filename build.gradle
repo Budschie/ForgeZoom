@@ -13,7 +13,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
 group = 'com.tyler'
-version = '0.3'
+version = '0.4'
 archivesBaseName = 'forgezoom'
 
 // We use Java 17 because of 1.18.1.
